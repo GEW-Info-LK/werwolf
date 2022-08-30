@@ -162,7 +162,7 @@ public class Spielleiter
     {
         System.out.println("Die Abstimmung beginnt nun. Zeigen sie bei 3 auf die Person die du rausvoten willst. 1!    2!!    3!!!");
         // & toterSpieler =  Spieler (der gevotet wurde)
-        
+        //hallo
     }
     
     public void erhaengen()
