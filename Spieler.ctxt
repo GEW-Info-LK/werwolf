@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Spieler
+comment1.params=
+comment1.target=Spieler()
+comment2.params=eingabeName
+comment2.target=void\ setName(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment4.params=pRolle
+comment4.target=void\ setSpielrolle(Rolle)
+comment5.params=
+comment5.target=Rolle\ getRolle()
+numComments=6
