@@ -4,9 +4,9 @@ public class Spieler
     String name;
     Rolle spielrolle;
     
-    public Spieler()
+    public Spieler(String name)
     {
-        
+        this.name = name;
     }
 
     public void setName(String eingabeName)

@@ -1,10 +1,11 @@
 import java.util.*;
+import java.util.stream.IntStream;
+
 public class Spielleiter
 {
-    private Spieler [] spielerarray;
+    private Spieler [] spieler;
     int anzahlWerwolf;
     int anzahlDorf;
-    Rolle [] rollen;
     List<Spieler> tode;
     boolean LebenstrankVorhanden = true;
     boolean ToetungstrankVorhanden = true;
@@ -29,24 +30,30 @@ public class Spielleiter
 
     public void spielErzeugen()
     {
-        spielerarray = new Spieler[8];
-        rollen = new Rolle[8];
+        spieler = new Spieler[8];
         anzahlWerwolf = 2;
         anzahlDorf = 6;
         for(int i=0; i<8; i++)
         {
             var name = Prompts.next("Geben Sie den Namen des "+(i+1)+". Spielers ein.");
-            spielerarray[i] = new Spieler();
-            spielerarray[i].setName(name);
+            spieler[i] = new Spieler(name);
         }
-        rollen[0] = new Werwolf();
-        rollen[1] = new Werwolf();
-        rollen[2] = new Seher();
-        rollen[3] = new Hexe();
-        rollen[4] = new Dorfbewohner();
-        rollen[5] = new Dorfbewohner();
-        rollen[6] = new Dorfbewohner();
-        rollen[7] = new Dorfbewohner();
+    }
+
+    public void rollenZuweisen()
+    {
+        var rollen = new ArrayList<>(List.of(
+                new Werwolf(),
+                new Werwolf(),
+                new Seher(),
+                new Hexe(),
+                new Dorfbewohner(),
+                new Dorfbewohner(),
+                new Dorfbewohner(),
+                new Dorfbewohner()
+        ));
+        Collections.shuffle(rollen);
+        IntStream.range(0, 8).forEach(i -> spieler[i].setSpielrolle(rollen.get(i)));
     }
 
     public void nachtphase()
@@ -57,7 +64,7 @@ public class Spielleiter
         seherErwacht();
         hexeErwacht();
     }
-    
+
     public void tagphase()
     {
         dorfErwacht();
@@ -67,32 +74,15 @@ public class Spielleiter
         abstimmen();
         erhaengen();
     }
-    
-    public void rollenZuweisen()
-    {
-        Random rand = new Random();
-        for(int i = 0; i<8; i++)
-        {
-            int zufall = rand.nextInt(8);
-            if(spielerarray[zufall].getRolle() == null)
-            {
-                spielerarray[zufall].setSpielrolle(rollen[i]);
-            }
-            else
-            {
-                i--;
-            }
-        }
-    }
-    
+
     public void rolleWissen()
     {
         System.out.println("Alle schließen die Augen.");
         Prompts.warte();
         for(int i=0; i<8; i++)
         {
-            System.out.println("Es darf "+spielerarray[i].getName()+" die Augen öffnen.");
-            System.out.println("Du bist "+spielerarray[i].getRolle()+".");
+            System.out.println("Es darf "+ spieler[i].getName()+" die Augen öffnen.");
+            System.out.println("Du bist "+ spieler[i].getRolle()+".");
             Prompts.warte();
         }
     }
@@ -109,14 +99,14 @@ public class Spielleiter
         System.out.println("Die Werwölfe suchen sich ein Ziel");
            for(int x=0; x<8; x++)
         {
-            if(spielerarray[x].istWerwolf())
+            if(spieler[x].istWerwolf())
             {
                 System.out.println("Der " +(x+1)+ " Spieler heist");
-                System.out.println(spielerarray[x].getName());
+                System.out.println(spieler[x].getName());
                 System.out.println("und ist WERWOLF.");
             } else {
                 System.out.println("Der " +(x+1)+ " Spieler heisst.");
-                System.out.println(spielerarray[x].getName());
+                System.out.println(spieler[x].getName());
             }
         }
     }
@@ -131,9 +121,9 @@ public class Spielleiter
         Spieler hexe = null;
         for(int i = 0; i<8; i++)
         {
-            if(spielerarray[i].getRolle() instanceof Hexe)
+            if(spieler[i].getRolle() instanceof Hexe)
             {
-                hexe = spielerarray[i];
+                hexe = spieler[i];
             }
         }
         if (hexe == null) return;

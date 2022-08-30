@@ -25,7 +25,7 @@ public class Prompts {
 	}
 
 	public static boolean bool(String prompt) {
-		out.print(prompt);
+		out.print(prompt + "\t");
 		return bool();
 	}
 
@@ -34,7 +34,7 @@ public class Prompts {
 	}
 
 	public static String next(String prompt) {
-		out.print(prompt);
+		out.print(prompt + "\t");
 		return next();
 	}
 
