@@ -111,13 +111,21 @@ public class Spielleiter
         System.out.println("Die Werwölfe Erwachen.");
         // phase = wach
         System.out.println("Die Werwölfe suchen sich ein Ziel");
-        for(int x=0; x<8; x++)
+           for(int x=0; x<8; x++)
         {
-            System.out.println("Der " +(x+1)+ " Spieler heisst.");
-            System.out.println(spielerarray[x].getName());
-            
+            if(spielerarray[x].getRolle().getRollenName() != "Werwolf")
+            {
+                System.out.println("Der " +(x+1)+ " Spieler heisst.");
+                System.out.println(spielerarray[x].getName());
+            }   
+            if(spielerarray[x].getRolle().getRollenName() == "Werwolf")
+            {
+                System.out.println("Der " +(x+1)+ " Spieler heist");
+                System.out.println(spielerarray[x].getName());
+                System.out.println("und ist WERWOLF.");
+            }   
         }
-       werwoelfetoeten();
+        //werwoelfetoeten();
     }
     public void werwoelfetoeten(int spielerzahl)
     {
@@ -181,7 +189,7 @@ public class Spielleiter
     
     public void opfer()
     {
-        System.out.println("die Opfer sind Ole und gestorben sind:");
+        System.out.println("Das Opfer ist ");
     }
     
     public void diskussion()
@@ -198,7 +206,7 @@ public class Spielleiter
     {
         System.out.println("Die Abstimmung beginnt nun. Zeigen sie bei 3 auf die Person die du rausvoten willst. 1!    2!!    3!!!");
         // & toterSpieler =  Spieler (der gevotet wurde)
-        
+        //hallo
     }
     
     public void erhaengen()
