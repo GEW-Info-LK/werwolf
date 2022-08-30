@@ -122,6 +122,7 @@ public class Spielleiter
     public void seherErwacht()
     {
         System.out.println("Der Seher erwacht.");
+        System.out.println("Test");
     }
     
     public void hexeErwacht()
