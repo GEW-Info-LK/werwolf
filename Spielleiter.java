@@ -8,6 +8,11 @@ public class Spielleiter
     Rolle [] rollen;
     Spieler toterSpieler;
     Spieler werwolfOpfer;
+    int anzahlLebenTrank = 1; 
+    int anzahlToetenTrank = 1; 
+    String Opfer; 
+    String Opfer2; 
+   
     public Spielleiter()
     {
         
@@ -112,7 +117,7 @@ public class Spielleiter
             System.out.println(spielerarray[x].getName());
             
         }
-        werwoelfetoeten();
+       werwoelfetoeten();
     }
     public void werwoelfetoeten(int spielerzahl)
     {
@@ -124,11 +129,51 @@ public class Spielleiter
         System.out.println("Der Seher erwacht.");
     }
     
+   
     public void hexeErwacht()
     {
-        System.out.println("Die Hexe erwacht aus ihrem Schlaf.");
+        /*Spieler hexe;
+        for(int i = 0; i<8; i++)
+        {
+            if(spielerarray[i].getRolle().getRollenName().equals("Hexe"))
+            {
+                hexe = spielerarray[i];
+            }
+        }*/
+        if (anzahlLebenTrank > 0 || anzahlToetenTrank > 0) 
+        {
+            System.out.println ("Die Hexe erwacht. Dies ist das Opfer. Möchtest du es heilen?");
+            Scanner scan = new Scanner(System.in); 
+            String antwort = scan.next(); 
+            if (antwort.equals("Ja")) 
+            {
+                Opfer = "niemand";
+                anzahlLebenTrank --; 
+            }
+            else if (antwort.equals("Nein"))
+            {
+                anzahlLebenTrank = 1; 
+            }
+            System.out.println ("Möchtest du eine andere Person umbringen und wenn ja, wen?");
+            String antwort2 = scan.next(); 
+            if (antwort2.equals("Ja"))
+            { 
+                new Scanner (System.in); 
+                Opfer2 = scan.next();
+                anzahlToetenTrank--; 
+            }
+            else if (antwort.equals("Nein"))
+            {
+                anzahlToetenTrank = 1; 
+            }
+        }
+        else if (anzahlLebenTrank == 0 && anzahlToetenTrank == 0) 
+        {
+            System.out.println ("Da alle Tränke der Hexe verbraucht sind, erwacht die Hexe nicht mehr.");
+            System.out.println ("Es ist noch " +anzahlToetenTrank+ " Trank zum Töten verfügbar, und noch " +anzahlLebenTrank+ " Trank zum Wiederbeleben verfügbar.");
+            
+        }
     }
-    
     public void dorfErwacht()
     {
         System.out.println("Das Dorf erwacht.");
