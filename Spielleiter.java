@@ -131,7 +131,6 @@ public class Spielleiter
     public void seherErwacht()
     {
         System.out.println("Der Seher erwacht.");
-        System.out.println("Test");
     }
     
     public void hexeErwacht()
@@ -146,7 +145,7 @@ public class Spielleiter
     
     public void opfer()
     {
-        System.out.println("die Opfer sind Ole und gestorben sind:");
+        System.out.println("Das Opfer ist ");
     }
     
     public void diskussion()
