@@ -32,4 +32,9 @@ public class Spieler
     public boolean istWerwolf() {
         return spielrolle.istWerwolf();
     }
+
+    @Override
+    public String toString() {
+        return name + " (" + spielrolle + ")";
+    }
 }
