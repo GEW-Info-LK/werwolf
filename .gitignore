@@ -4,3 +4,5 @@
 *.jar
 replay_pid*
 *.bluej
+
+.idea
