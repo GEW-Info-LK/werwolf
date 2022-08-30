@@ -125,7 +125,6 @@ public class Spielleiter
                 System.out.println("und ist WERWOLF.");
             }   
         }
-        //werwoelfetoeten();
     }
     public void werwoelfetoeten(int spielerzahl)
     {
