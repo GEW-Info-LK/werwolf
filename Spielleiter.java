@@ -17,7 +17,20 @@ public class Spielleiter
     {
         
     }
-    
+
+    public void spielen()
+    {
+        spielErzeugen();
+        rollenZuweisen();
+        rolleWissen();
+        while((anzahlWerwolf > anzahlDorf) || (anzahlWerwolf != 0))
+        {
+            nachtphase();
+            tagphase();
+        }
+        ergebnis();
+    }
+
     public void spielErzeugen()
     {
         spielerarray = new Spieler[8];
@@ -42,20 +55,7 @@ public class Spielleiter
         LebenstrankVorhanden = true;
         ToetungstrankVorhanden = true;
     }
-    
-    public void spielen()
-    {
-        spielErzeugen();
-        rollenZuweisen();
-        rolleWissen();
-        while((anzahlWerwolf > anzahlDorf) || (anzahlWerwolf != 0))
-        {
-            nachtphase();
-            tagphase();
-        }
-        ergebnis();
-    }
-    
+
     public void nachtphase()
     {
         einschlafen();
