@@ -58,7 +58,6 @@ public class Spielleiter
     
     public void nachtphase()
     {
-        Scanner scan = new Scanner (System.in);
         einschlafen();
         System.out.println();
         werwoelfeErwachen();
@@ -117,12 +116,12 @@ public class Spielleiter
         System.out.println("Die Werwölfe suchen sich ein Ziel");
            for(int x=0; x<8; x++)
         {
-            if(spielerarray[x].getRolle().getRollenName() != "Werwolf")
+            if(!spielerarray[x].getRolle().getRollenName().equals("Werwolf"))
             {
                 System.out.println("Der " +(x+1)+ " Spieler heisst.");
                 System.out.println(spielerarray[x].getName());
             }   
-            if(spielerarray[x].getRolle().getRollenName() == "Werwolf")
+            if(spielerarray[x].getRolle().getRollenName().equals("Werwolf"))
             {
                 System.out.println("Der " +(x+1)+ " Spieler heist");
                 System.out.println(spielerarray[x].getName());
@@ -171,8 +170,7 @@ public class Spielleiter
             }
             
         }
-        else if (!LebenstrankVorhanden && !ToetungstrankVorhanden) 
-        {
+        else {
             System.out.println ("Da alle Tränke der Hexe verbraucht sind, erwacht die Hexe nicht mehr.");            
         }
     }
