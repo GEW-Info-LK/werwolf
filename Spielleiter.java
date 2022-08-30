@@ -10,7 +10,9 @@ public class Spielleiter
     Spieler werwolfOpfer;
     boolean LebenstrankVorhanden;
     boolean ToetungstrankVorhanden;
-    
+    String Opfer; 
+    String Opfer2; 
+   
     public Spielleiter()
     {
         
@@ -127,8 +129,6 @@ public class Spielleiter
                 System.out.println("und ist WERWOLF.");
             }   
         }
-        //werwoelfetoeten();
-        
     }
     public void werwoelfetoeten(int spielerzahl)
     {
@@ -140,11 +140,42 @@ public class Spielleiter
         System.out.println("Der Seher erwacht.");
     }
     
+   
     public void hexeErwacht()
     {
-        System.out.println("Die Hexe erwacht aus ihrem Schlaf.");
+        /*Spieler hexe;
+        for(int i = 0; i<8; i++)
+        {
+            if(spielerarray[i].getRolle().getRollenName().equals("Hexe"))
+            {
+                hexe = spielerarray[i];
+            }
+        }*/
+        if (LebenstrankVorhanden || ToetungstrankVorhanden) 
+        {
+            System.out.println ("Die Hexe erwacht. Dies ist das Opfer. Möchtest du es heilen?");
+            Scanner scan = new Scanner(System.in); 
+            String antwort = scan.next(); 
+            if (antwort.equals("Ja")) 
+            {
+                Opfer = "niemand";
+                LebenstrankVorhanden = false; 
+            }
+            
+            System.out.println ("Möchtest du eine andere Person umbringen und wenn ja, wen?");
+            String antwort2 = scan.next(); 
+            if (antwort2.equals("Ja"))
+            { 
+                Opfer2 = scan.next();
+                ToetungstrankVorhanden = false; 
+            }
+            
+        }
+        else if (!LebenstrankVorhanden && !ToetungstrankVorhanden) 
+        {
+            System.out.println ("Da alle Tränke der Hexe verbraucht sind, erwacht die Hexe nicht mehr.");            
+        }
     }
-    
     public void dorfErwacht()
     {
         System.out.println("Das Dorf erwacht.");
