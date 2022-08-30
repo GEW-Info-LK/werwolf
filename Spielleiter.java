@@ -1,20 +1,22 @@
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Spielleiter
 {
-    private Spieler [] spieler;
+    Spieler [] spieler;
     int anzahlWerwolf;
     int anzahlDorf;
     List<Spieler> tode;
     boolean LebenstrankVorhanden = true;
     boolean ToetungstrankVorhanden = true;
 
-    public Spielleiter()
-    {
-        
-    }
+    private static final Spielleiter instance = new Spielleiter();
+    private Spielleiter() { }
 
+    static public Spielleiter get() {
+        return instance;
+    }
     public void spielen()
     {
         spielErzeugen();
@@ -36,7 +38,7 @@ public class Spielleiter
         for(int i=0; i<8; i++)
         {
             var name = Prompts.next("Geben Sie den Namen des "+(i+1)+". Spielers ein.");
-            spieler[i] = new Spieler(name);
+            spieler[i] = new Spieler(name, i);
         }
     }
 
@@ -70,11 +72,30 @@ public class Spielleiter
 
     public void nachtphase()
     {
+        tode = new ArrayList<>();
+
         einschlafen();
         System.out.println();
-        werwoelfeErwachen();
-        seherErwacht();
-        hexeErwacht();
+
+//        werwoelfeErwachen();
+//        seherErwacht();
+//        hexeErwacht();
+
+        erwachen(Werwolf.class);
+        erwachen(Seher.class);
+        erwachen(Hexe.class);
+    }
+
+    private void erwachen(Class<? extends Rolle> rolle) {
+        var action = new Action();
+        for (int i = 0; i < 8; i++) {
+            if (rolle.isInstance(spieler[i].getRolle())) {
+                System.out.println(spieler[i].name + ", du bist dran.");
+                action = spieler[i].getRolle().aktion(action);
+            }
+        }
+        action.computeVoteKill();
+        action.playerExec(tode);
     }
 
     public void tagphase()
@@ -154,7 +175,20 @@ public class Spielleiter
     
     public void opfer()
     {
-        System.out.println("Das Opfer ist ");
+        if (tode.size() == 0) System.out.println("Es gibt in dieser Nacht kein Opfer.");
+        else if (tode.size() == 1) System.out.println(tode.get(0).name + " ist tot.");
+        else System.out.println(
+            "Ganze "
+            + tode.size()
+            + " Mitglieder des Dorfes sind tot: "
+            + tode.stream().map(Spieler::getName).collect(Collectors.joining(", "))
+        );
+
+        for (Spieler opfer: tode) {
+            spieler[opfer.id].stirb();
+        }
+
+        tode.clear();
     }
     
     public void diskussion()

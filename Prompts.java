@@ -1,10 +1,9 @@
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.lang.System.out;
 
 public class Prompts {
+	static private final Spielleiter leiter = Spielleiter.get();
 	static private final Scanner scan = new Scanner(System.in);
 	static private final Random random = new Random();
 
@@ -40,5 +39,38 @@ public class Prompts {
 
 	public static void warte() {
 		scan.nextLine();
+	}
+
+	public static Spieler spieler() {
+		var input = scan.nextLine();
+		try {
+			var integer = Integer.parseInt(input);
+			return leiter.spieler[integer];
+		} catch (NumberFormatException ignored) {}
+		for (Spieler s: leiter.spieler) {
+			if (s.name.equalsIgnoreCase(input)) return s;
+		}
+		out.println("Ungültiger Spieler: " + input);
+		out.println("Beispiel: " + leiter.spieler[random.nextInt(leiter.spieler.length)]);
+		return spieler();
+	}
+
+	public static Spieler spieler(String prompt) {
+		out.println(prompt + "\t");
+		return spieler();
+	}
+
+	public static Spieler dorfbewohner() {
+		var spieler = spieler();
+		if (spieler.istWerwolf()) {
+			System.out.println("Spieler " + spieler.name + " ist ein Werwolf!");
+			return dorfbewohner();
+		}
+		return spieler;
+	}
+
+	public static Spieler dorfbewohner(String prompt) {
+		out.println(prompt + "\t");
+		return dorfbewohner();
 	}
 }
