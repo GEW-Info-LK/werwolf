@@ -56,6 +56,18 @@ public class Spielleiter
         IntStream.range(0, 8).forEach(i -> spieler[i].setSpielrolle(rollen.get(i)));
     }
 
+    public void rolleWissen()
+    {
+        System.out.println("Alle schließen die Augen.");
+        Prompts.warte();
+        for(int i=0; i<8; i++)
+        {
+            System.out.println("Es darf "+ spieler[i].getName()+" die Augen öffnen.");
+            System.out.println("Du bist "+ spieler[i].getRolle()+".");
+            Prompts.warte();
+        }
+    }
+
     public void nachtphase()
     {
         einschlafen();
@@ -75,23 +87,11 @@ public class Spielleiter
         erhaengen();
     }
 
-    public void rolleWissen()
-    {
-        System.out.println("Alle schließen die Augen.");
-        Prompts.warte();
-        for(int i=0; i<8; i++)
-        {
-            System.out.println("Es darf "+ spieler[i].getName()+" die Augen öffnen.");
-            System.out.println("Du bist "+ spieler[i].getRolle()+".");
-            Prompts.warte();
-        }
-    }
-    
     public void einschlafen()
     {
         System.out.println("Das Dorf schläft ein.");
     }
-    
+
     public void werwoelfeErwachen()
     {
         System.out.println("Die Werwölfe Erwachen.");
@@ -114,7 +114,7 @@ public class Spielleiter
     {
         System.out.println("Der Seher erwacht.");
     }
-    
+
    
     public void hexeErwacht()
     {
