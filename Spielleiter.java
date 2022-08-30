@@ -8,6 +8,9 @@ public class Spielleiter
     Rolle [] rollen;
     Spieler toterSpieler;
     Spieler werwolfOpfer;
+    boolean LebenstrankVorhanden;
+    boolean ToetungstrankVorhanden;
+    
     public Spielleiter()
     {
         
@@ -34,6 +37,8 @@ public class Spielleiter
         rollen[5] = new Dorfbewohner();
         rollen[6] = new Dorfbewohner();
         rollen[7] = new Dorfbewohner();
+        LebenstrankVorhanden = true;
+        ToetungstrankVorhanden = true;
     }
     
     public void spielen()
@@ -51,7 +56,9 @@ public class Spielleiter
     
     public void nachtphase()
     {
+        Scanner scan = new Scanner (System.in);
         einschlafen();
+        System.out.println();
         werwoelfeErwachen();
         seherErwacht();
         hexeErwacht();
