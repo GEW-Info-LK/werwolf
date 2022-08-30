@@ -8,8 +8,8 @@ public class Spielleiter
     Rolle [] rollen;
     Spieler toterSpieler;
     Spieler werwolfOpfer;
-    boolean LebenstrankVorhanden;
-    boolean ToetungstrankVorhanden;
+    boolean LebenstrankVorhanden = true;
+    boolean ToetungstrankVorhanden = true;
     String Opfer; 
     String Opfer2; 
    
@@ -52,8 +52,6 @@ public class Spielleiter
         rollen[5] = new Dorfbewohner();
         rollen[6] = new Dorfbewohner();
         rollen[7] = new Dorfbewohner();
-        LebenstrankVorhanden = true;
-        ToetungstrankVorhanden = true;
     }
 
     public void nachtphase()
