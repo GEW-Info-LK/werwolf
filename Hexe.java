@@ -1,10 +1,8 @@
 
-public class Hexe extends Rolle
+public class Hexe extends Dorfbewohner
 {
-    
-    public Hexe()
-    {
-        rollenName = "Hexe";
+    @Override
+    public String toString() {
+        return "Hexe";
     }
-
 }

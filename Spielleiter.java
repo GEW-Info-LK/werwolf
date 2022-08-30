@@ -99,7 +99,7 @@ public class Spielleiter
         for(int i=0; i<8; i++)
         {
             System.out.println("Es darf "+spielerarray[i].getName()+" die Augen öffnen.");
-            System.out.println("Du bist "+spielerarray[i].getRolle().getRollenName()+".");
+            System.out.println("Du bist "+spielerarray[i].getRolle()+".");
             scan.next();
         }
     }
@@ -116,16 +116,14 @@ public class Spielleiter
         System.out.println("Die Werwölfe suchen sich ein Ziel");
            for(int x=0; x<8; x++)
         {
-            if(!spielerarray[x].getRolle().getRollenName().equals("Werwolf"))
-            {
-                System.out.println("Der " +(x+1)+ " Spieler heisst.");
-                System.out.println(spielerarray[x].getName());
-            }   
-            if(spielerarray[x].getRolle().getRollenName().equals("Werwolf"))
+            if(spielerarray[x].istWerwolf())
             {
                 System.out.println("Der " +(x+1)+ " Spieler heist");
                 System.out.println(spielerarray[x].getName());
                 System.out.println("und ist WERWOLF.");
+            } else {
+                System.out.println("Der " +(x+1)+ " Spieler heisst.");
+                System.out.println(spielerarray[x].getName());
             }   
         }
     }

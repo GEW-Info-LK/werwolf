@@ -28,4 +28,8 @@ public class Spieler
     {
         return spielrolle;
     }
+
+    public boolean istWerwolf() {
+        return spielrolle.istWerwolf();
+    }
 }

@@ -3,10 +3,13 @@ public class Werwolf extends Rolle
 {
     
     
-    public Werwolf()
-    {
-        rollenName = "Werwolf";
+    @Override
+    public boolean istWerwolf() {
+        return true;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Werwolf";
+    }
 }

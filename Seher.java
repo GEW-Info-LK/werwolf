@@ -1,10 +1,8 @@
 
-public class Seher extends Rolle
+public class Seher extends Dorfbewohner
 {
-    
-    public Seher()
-    {
-        rollenName = "Seher";
+    @Override
+    public String toString() {
+        return "Seher";
     }
-
 }

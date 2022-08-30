@@ -1,10 +1,7 @@
 import java.util.*;
 public abstract class Rolle
 {
-    String rollenName;
-    
-    public String getRollenName()
-    {
-        return rollenName;
-    }
+    public abstract boolean istWerwolf();
+    @Override
+    public abstract String toString();
 }
