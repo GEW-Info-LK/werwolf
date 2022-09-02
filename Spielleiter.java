@@ -115,7 +115,7 @@ public class Spielleiter
 
     public void werwoelfeErwachen()
     {
-        System.out.println("Die Werwölfe Erwachen.");
+        System.out.println("Die Werwölfe erwachen.");
         // phase = wach
         System.out.println("Die Werwölfe suchen sich ein Ziel");
            for(int x=0; x<8; x++)
