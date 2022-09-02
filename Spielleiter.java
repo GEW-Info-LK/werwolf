@@ -122,11 +122,11 @@ public class Spielleiter
         {
             if(spieler[x].istWerwolf())
             {
-                System.out.println("Der " +(x+1)+ " Spieler heisst");
+                System.out.println("Der " +(x+1)+ " Spieler heißt");
                 System.out.println(spieler[x].getName());
                 System.out.println("und ist WERWOLF.");
             } else {
-                System.out.println("Der " +(x+1)+ " Spieler heisst.");
+                System.out.println("Der " +(x+1)+ " Spieler heißt.");
                 System.out.println(spieler[x].getName());
             }
         }
@@ -203,7 +203,7 @@ public class Spielleiter
     
     public void abstimmen()
     {
-        System.out.println("Die Abstimmung beginnt nun. Zeigen sie bei 3 auf die Person die du rausvoten willst. 1!    2!!    3!!!");
+        System.out.println("Die Abstimmung beginnt nun. Zeigen sie bei 3 auf die Person die sie rausvoten wollen. 1!    2!!    3!!!");
         // & toterSpieler =  Spieler (der gevotet wurde)
         //hallo
     }
