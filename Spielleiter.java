@@ -193,12 +193,12 @@ public class Spielleiter
     
     public void diskussion()
     {
-        System.out.println("Diskutieren sie nun, wen sie an disem Morgen gerne exekutieren würden.");
+        System.out.println("Diskutieren sie nun, wen sie an diesem Morgen gerne exekutieren würden.");
     }
     
     public void anklagen()
     {
-        System.out.println("Nun können die Dordbewohner jemanden anklagen.");
+        System.out.println("Nun können die Dorfbewohner jemanden anklagen.");
     }
     
     public void abstimmen()
