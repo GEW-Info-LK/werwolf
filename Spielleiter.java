@@ -122,7 +122,7 @@ public class Spielleiter
         {
             if(spieler[x].istWerwolf())
             {
-                System.out.println("Der " +(x+1)+ " Spieler heist");
+                System.out.println("Der " +(x+1)+ " Spieler heisst");
                 System.out.println(spieler[x].getName());
                 System.out.println("und ist WERWOLF.");
             } else {
