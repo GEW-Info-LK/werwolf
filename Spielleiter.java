@@ -29,7 +29,10 @@ public class Spielleiter
         }
         ergebnis();
     }
-
+    public void getdeathgroups()
+    {
+        //Werölfe etc aus tode filtern
+    }
     public void spielErzeugen()
     {
         spieler = new Spieler[8];
