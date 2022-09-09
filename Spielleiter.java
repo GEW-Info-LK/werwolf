@@ -82,7 +82,9 @@ public class Spielleiter
 //        hexeErwacht();
 
         erwachen(Werwolf.class);
+        seherErwacht();
         erwachen(Seher.class);
+        hexeErwacht();
         erwachen(Hexe.class);
     }
 
@@ -151,18 +153,20 @@ public class Spielleiter
 
         if (LebenstrankVorhanden) {
             System.out.println(hexe + " erwacht. Das Opfer ist " + tode.get(0) + ". Möchtest du es heilen?");
-            String antwort = Prompts.next();
-            if (antwort.equals("Ja")) {
+            if (Prompts.bool())
+            {
                 tode.clear();
                 LebenstrankVorhanden = false;
             }
+            
         }
 
         if (ToetungstrankVorhanden) {
-            System.out.println ("Möchtest du eine andere Person umbringen und wenn ja, wen?");
+            System.out.println ("Möchtest du eine andere Person umbringen?");
             if (Prompts.bool())
             {
-                // TODO: tode.add(...)
+                System.out.println("Wen möchtest du um die Ecke bringen?");
+                tode.add(Prompts.spieler());
                 ToetungstrankVorhanden = false;
             }
             
