@@ -85,10 +85,10 @@ public class Spielleiter
 //        hexeErwacht();
 
         erwachen(Werwolf.class);
+        namewach(Seher.class);
         seherErwacht();
-        erwachen(Seher.class);
+        namewach(Hexe.class);
         hexeErwacht();
-        erwachen(Hexe.class);
     }
 
     private void erwachen(Class<? extends Rolle> rolle) {
@@ -103,6 +103,15 @@ public class Spielleiter
         action.playerExec(tode);
     }
 
+    
+    private void namewach(Class<? extends Rolle> rolle) {
+        for (int i = 0; i < 8; i++) {
+            if (rolle.isInstance(spieler[i].getRolle())) {
+                System.out.println(spieler[i].name + ", du bist dran.");
+            }
+        }
+    }
+    
     public void tagphase()
     {
         dorfErwacht();
@@ -120,6 +129,7 @@ public class Spielleiter
 
     public void werwoelfeErwachen()
     {
+
         System.out.println("Die Werwölfe erwachen.");
         // phase = wach
         System.out.println("Die Werwölfe suchen sich ein Ziel");
@@ -138,24 +148,16 @@ public class Spielleiter
     }
     public void seherErwacht()
     {
-        System.out.println("Der Seher erwacht.");
+        System.out.println("Über welchen Spieler möchtest du mehr erfahren?");
+        Spieler info = Prompts.spieler();
+        if(info.istWerwolf())System.out.println(info + " ist ein Werwolf");
+        else System.out.println(info + " ist kein Werwolf");
     }
-
-   
     public void hexeErwacht()
     {
-        Spieler hexe = null;
-        for(int i = 0; i<8; i++)
-        {
-            if(spieler[i].getRolle() instanceof Hexe)
-            {
-                hexe = spieler[i];
-            }
-        }
-        if (hexe == null) return;
-
+       
         if (LebenstrankVorhanden) {
-            System.out.println(hexe + " erwacht. Das Opfer ist " + tode.get(0) + ". Möchtest du es heilen?");
+            System.out.println("Das Opfer ist " + tode.get(0) + ". Möchtest du es heilen?");
             if (Prompts.bool())
             {
                 tode.clear();

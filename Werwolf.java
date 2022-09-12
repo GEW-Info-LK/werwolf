@@ -3,8 +3,6 @@ import java.util.stream.Collectors;
 
 public class Werwolf extends Rolle
 {
-
-
     @Override
     public Action aktion(Action prevAction) {
         var killable = Arrays.stream(Spielleiter.get().spieler)
